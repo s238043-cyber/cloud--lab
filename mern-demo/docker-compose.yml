@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  # Câu 81: Khai báo Service backend
+  backend:
+    build: ./server
+    # Câu 83: Cấu hình Port 5000 cho backend
+    ports:
+      - "5000:5000"
+    # Câu 85: Cấu hình biến môi trường MONGODB_URI cho Backend
+    env_file:
+      - ./server/.env
+
+  # Câu 82: Khai báo Service frontend
+  frontend:
+    build: .
+    # Câu 84: Cấu hình Port 3000 cho frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
